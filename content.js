@@ -113,7 +113,7 @@ function showLoadingOverlay() {
       <h2 class="gemini-loading-brand">ScripVision</h2>
       <img src="${iconUrl}" alt="ScripVision Logo" class="gemini-loading-logo" />
       <h3 class="gemini-loading-text">analyzing scrip...</h3>
-      <div class="gemini-copyright" style="text-align: center; padding: 0 20px;">© 2026 ScripVision. All rights reserved. All trademarks, copyrights, and logos are the property of their respective owners.</div>
+      <div class="gemini-copyright" style="text-align: center; padding: 0 20px;">© 2026 Rajesh Joshi. All rights reserved. All trademarks, copyrights, and logos are the property of their respective owners.</div>
     </div>
   `;
   
@@ -171,7 +171,7 @@ function createModalDOM() {
           <div class="gemini-footer-left">
             <img src="${iconUrl}" alt="ScripVision Logo" class="gemini-footer-logo" />
             <span class="gemini-footer-brand">ScripVision</span>
-            <span class="gemini-copyright" style="margin-left: 10px; border-left: 1px solid #ddd; padding-left: 10px;">© 2026 ScripVision. All rights reserved.</span>
+            <span class="gemini-copyright" style="margin-left: 10px; border-left: 1px solid #ddd; padding-left: 10px;">© 2026 Rajesh Joshi. All rights reserved.</span>
           </div>
           <button id="gemini-download-btn" class="gemini-download-btn">Download .xlsx</button>
         </div>
