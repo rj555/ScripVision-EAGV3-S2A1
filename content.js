@@ -1,3 +1,15 @@
+window.__scripVisionLoaded = true;
+
+// Remove UI left behind by a previous instance of this script (e.g. after the
+// extension is reloaded, the old script is orphaned but its DOM stays on the page)
+['gemini-stock-tooltip', 'gemini-stock-loading-overlay', 'gemini-stock-overlay'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.remove();
+    document.body.style.overflow = '';
+  }
+});
+
 let currentTooltip = null;
 let currentSymbol = '';
 let currentAnalysisData = null;

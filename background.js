@@ -127,3 +127,25 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return true; // Indicates we will send a response asynchronously
   }
 });
+
+// Chrome does not inject manifest content scripts into tabs that were already open
+// when the extension is installed or reloaded, so inject them manually
+chrome.runtime.onInstalled.addListener(async () => {
+  const contentScript = chrome.runtime.getManifest().content_scripts[0];
+  const tabs = await chrome.tabs.query({ url: ['http://*/*', 'https://*/*'] });
+
+  for (const tab of tabs) {
+    try {
+      const [{ result: loaded }] = await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: () => !!window.__scripVisionLoaded
+      });
+      if (loaded) continue;
+
+      await chrome.scripting.insertCSS({ target: { tabId: tab.id }, files: contentScript.css });
+      await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: contentScript.js });
+    } catch (error) {
+      // Tab can't be scripted (e.g. Chrome Web Store, discarded tab) - skip it
+    }
+  }
+});
